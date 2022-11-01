@@ -1,69 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/01 17:49:21 by ktunchar          #+#    #+#             */
+/*   Updated: 2022/11/01 19:32:15 by ktunchar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
-#include "libft/libft.h"
+#include <stddef.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+
+char	*create_buffer(char *buffer)
 {
-	char	*buffer;
-	int		i;
-	int		j;
+	char	*new_buffer;
 
-	//if (!s1 || !s2)
-	//	return (NULL);
-	buffer = malloc((strlen(s1) + strlen(s2) + 1) * sizeof (char));
-	if (!buffer)
-		return (NULL);
-	bzero(buffer, strlen(s1) + strlen(s2) + 1);
-	i = 0;
-	j = 0;
-	while (s1[j])
-		buffer[i++] = s1[j++];
-	j = 0;
-	while (s2[j])
-		buffer[i++] = s2[j++];
-	return (buffer);
+	if (buffer != NULL)
+		return (buffer);
+	new_buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (new_buffer != NULL)
+		*new_buffer = '\0';
+	return (new_buffer);
 }
 
-int	last_is_enter(char *str)
+
+char	*read_line(int	fd,char *buffer)
 {
-	int	len;
+	int		n;
+	char	*next;
+	char	*line
+	if (fd < 0)
+		return (NULL)
+	n = read(fd, buffer, BUFFER_SIZE);
+	if (n >= 0)
+		*(buffer + n) = '\0';
 
-	len = strlen(str);
-
-	if (str[len - 1] == '\n')
-	{
-		return (1);
-	}
-	return (0);
 }
 
+char	*get_next_line(int fd)
+{
+	static char *buffer;
+	char		*next;
+	char		*line;
+
+	buffer = create_buffer(buffer);
+
+	next = NULL;
+
+	line = read_line(fd, buffer);
+}
 
 int	main()
 {
-	int fd;
 
-	char *buffer;
-	int	i;
-	char *str = "";
-
-	i = 1;
-
-	fd = open("test",O_RDWR);
-
-	printf("fd : %d\n",fd);
-
-	while (!last_is_enter(buffer))
-	{
-		read(fd, buffer, 1);
-		str = ft_strjoin(str,buffer);
-	}
-
-	
-	printf("buffer : %s\n",str);
-	
-	//read(fd, buffer, 1);
-
-	//printf("buffer : %s\n",buffer);
+	get_next_line(1);
 }
