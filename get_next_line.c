@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maikittitee <maikittitee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:49:21 by ktunchar          #+#    #+#             */
-/*   Updated: 2022/11/01 19:32:15 by ktunchar         ###   ########.fr       */
+/*   Updated: 2022/11/02 04:12:42 by maikittitee      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <unistd.h>
-#include <stddef.h>
+#include "get_next_line.h"
 
 
 char	*create_buffer(char *buffer)
@@ -34,9 +30,9 @@ char	*read_line(int	fd,char *buffer)
 {
 	int		n;
 	char	*next;
-	char	*line
+	char	*line;
 	if (fd < 0)
-		return (NULL)
+		return (NULL);
 	n = read(fd, buffer, BUFFER_SIZE);
 	if (n >= 0)
 		*(buffer + n) = '\0';
@@ -45,19 +41,33 @@ char	*read_line(int	fd,char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char *buffer;
-	char		*next;
-	char		*line;
+	char		*buffer;
+	static char	*next;
+	char		*line = "";
+	int			n;
 
 	buffer = create_buffer(buffer);
+	if (!buffer)
+		return (NULL);
 
-	next = NULL;
+	n = read(fd, buffer, BUFFER_SIZE);
+	buffer[n] = '\0';
 
-	line = read_line(fd, buffer);
+	next = ft_strchr(buffer, '\n');
+	if (!next)
+		line = ft_strjoin(line,buffer);
+
+
+	return (line);
+
+
 }
 
 int	main()
 {
+	int	fd;
 
-	get_next_line(1);
+	fd = open("test",O_RDONLY);
+
+	printf("gnl = %s\n",get_next_line(fd));
 }
