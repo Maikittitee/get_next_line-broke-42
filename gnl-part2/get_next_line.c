@@ -10,12 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <unistd.h>
-#include <stddef.h>
+#include "get_next_line.h"
 
 char    *get_next_line(int fd)
 {
