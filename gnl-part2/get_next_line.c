@@ -11,15 +11,28 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+	
 char    *get_next_line(int fd)
 {
     static char		*buffer;
     char			*line;
 	char			*next;
+	int	n;
 
-	if (!line)
+	line = NULL;
+	if (!next)
 		buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	while (!strchr(line, '\n'))
+	{
+		n = read(fd, buffer, BUFFER_SIZE);
+		if (line = NULL)
+			//strdup buffer to line;
+		else
+			//strcat buffer to line;
+	}
+	//cut only last \n in line
+	//make buffer keep only after \n 
+	return (line);
 
 
 }
