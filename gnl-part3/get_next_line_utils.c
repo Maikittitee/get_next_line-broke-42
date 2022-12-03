@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 14:49:14 by ktunchar          #+#    #+#             */
-/*   Updated: 2022/12/03 17:41:57 by ktunchar         ###   ########.fr       */
+/*   Updated: 2022/12/03 21:30:05 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,3 +92,12 @@ void	ft_buffercpy(char *dst, const char *src)
     *dst = 0;
 }
 
+char	*ft_strjoin_free(char const *s1, char const *s2)
+{
+	char	buffer;
+
+	buffer = ft_strjoin(s1, s2);
+	free(s2);
+	free(s1);
+	return (buffer);
+}
