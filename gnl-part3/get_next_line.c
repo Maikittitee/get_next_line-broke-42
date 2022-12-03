@@ -12,6 +12,28 @@
 
 #include "get_next_line.h"
 
+char	*read_line(char *buffer, int fd)	
+{
+	char	*next;
+	char	*line;
+	int		n;
+
+	line = NULL;
+	n = read(fd, buffer, BUFFER_SIZE);
+	while (ft_strlen(buffer)) //if not EOF
+	{
+		next = ft_strchr(buffer, '\n');
+		if (next == NULL)
+			line = ft_strjoin(buffer, "");
+		else
+		{
+			line = ft_strjoin(buffer, "\n");
+			ft_buffercpy(buffer, next + 1);
+			printf("line is %s\n",line);
+			return (line);
+		}
+	}
+}
 	
 char    *get_next_line(int fd)
 {
@@ -22,6 +44,10 @@ char    *get_next_line(int fd)
 
 	if (!buffer)
 		buffer = malloc(sizeof(char) *  (BUFFER_SIZE + 1));
+	next = read_line(buffer, fd);
+	if (ft_strchr(next,'\n'))
+		return (next);
+
 
 
 }
@@ -34,6 +60,6 @@ int main()
 	if (fd < 0)
 		printf("Cannot Open File\n");
 	printf("line 1 :%s\n",get_next_line(fd));
-	printf("line 2 :%s\n",get_next_line(fd));
+	// printf("line 2 :%s\n",get_next_line(fd));
     
 }
