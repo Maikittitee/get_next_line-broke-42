@@ -55,17 +55,13 @@ char *read_line(int	fd, char *str)
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	while (can_read)
 	{
+		ft_bzero(buffer, BUFFER_SIZE + 1);
 		can_read = read(fd, buffer, BUFFER_SIZE);
-		//printf("buff = %s\n",buffer);
-
-		//printf("\e[1;33m%s\e[0m\n",buffer);
 		if (can_read <= 0)
 			break;
 		str = ft_strjoin_free(str, buffer);
-		//printf("2str = %s\n",str);
 		if (ft_strchr(buffer, '\n'))
 			break;
-		//printf("1buff = %s\n",buffer);
 		
 	}
 	free(buffer);
@@ -79,14 +75,8 @@ char *get_next_line(int fd)
 	int	len;
 	int	len_nl;
 
-	len_nl = ft_strlen_nl(str);
-	len = ft_strlen(str);
-
 	line = NULL;
-
-	if (len_nl == len)
-		str = read_line(fd, str);
-
+	str = read_line(fd, str);
 	if (str)
 	{
 		line = get_only_line(str);
@@ -96,18 +86,18 @@ char *get_next_line(int fd)
 
 }
 
-// int	main()
-// {
-// 	int	fd;
+int	main()
+{
+	int	fd;
 
-// 	char *a = "012345\nab";
+	char *a = "012345\nab";
 
-// 	fd = open("41_no_nl",O_RDONLY);
+	fd = open("41_no_nl",O_RDONLY);
 
-// 	//printf("strlen_nl = %zu\n",ft_strlen_nl(a));
-// 	//printf("strlen = %zu\n",ft_strlen(a));
-// 	printf("line 1 : %s---",get_next_line(fd));
-// 	// printf("line 2 : %s",get_next_line(fd));
-// 	// printf("line 3 : %s",get_next_line(fd));
-// 	// printf("line 4 : %s",get_next_line(fd));
-// }
+	//printf("strlen_nl = %zu\n",ft_strlen_nl(a));
+	//printf("strlen = %zu\n",ft_strlen(a));
+	printf("line 1 : %s---",get_next_line(fd));
+	// printf("line 2 : %s",get_next_line(fd));
+	// printf("line 3 : %s",get_next_line(fd));
+	// printf("line 4 : %s",get_next_line(fd));
+}

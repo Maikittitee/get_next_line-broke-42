@@ -70,25 +70,25 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (buffer);
 }
 
-// void	ft_bzero(void *s, size_t n)
-// {
-// 	ft_memset(s, 0, n);
-// }
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
 
-// void	*ft_memset(void *b, int c, size_t len)
-// {
-// 	size_t			i;
-// 	unsigned char	*str;
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t			i;
+	unsigned char	*str;
 
-// 	i = 0;
-// 	str = b;
-// 	while (i < len)
-// 	{
-// 		str[i] = c;
-// 		i++;
-// 	}
-// 	return (str);
-// }
+	i = 0;
+	str = b;
+	while (i < len)
+	{
+		str[i] = c;
+		i++;
+	}
+	return (str);
+}
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
