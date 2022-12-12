@@ -96,7 +96,7 @@ int	main()
 
 	//printf("strlen_nl = %zu\n",ft_strlen_nl(a));
 	//printf("strlen = %zu\n",ft_strlen(a));
-	printf("line 1 : %s---",get_next_line(fd));
+	printf("line 1 : %s",get_next_line(fd));
 	printf("line 2 : %s",get_next_line(fd));
 	// printf("line 3 : %s",get_next_line(fd));
 	// printf("line 4 : %s",get_next_line(fd));

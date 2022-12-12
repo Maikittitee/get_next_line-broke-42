@@ -21,7 +21,7 @@
 #include <stdlib.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 80
+#define BUFFER_SIZE 1
 #endif
 
 char	*ft_strchr(const char *s, int c);
