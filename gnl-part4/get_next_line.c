@@ -92,12 +92,12 @@ int	main()
 
 	char *a = "012345\nab";
 
-	fd = open("41_no_nl",O_RDONLY);
+	fd = open("test",O_RDONLY);
 
 	//printf("strlen_nl = %zu\n",ft_strlen_nl(a));
 	//printf("strlen = %zu\n",ft_strlen(a));
 	printf("line 1 : %s---",get_next_line(fd));
-	// printf("line 2 : %s",get_next_line(fd));
+	printf("line 2 : %s",get_next_line(fd));
 	// printf("line 3 : %s",get_next_line(fd));
 	// printf("line 4 : %s",get_next_line(fd));
 }
