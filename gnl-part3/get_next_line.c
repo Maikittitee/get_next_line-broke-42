@@ -29,7 +29,7 @@ char	*read_line(char *buffer, int fd)
 		{
 			line = ft_strjoin(buffer, "\n");
 			ft_buffercpy(buffer, next + 1);
-			printf("line is %s\n",line);
+			//printf("line is %s\n",line);
 			return (line);
 		}
 	}
