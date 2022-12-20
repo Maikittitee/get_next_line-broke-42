@@ -117,17 +117,6 @@ size_t	ft_strlen_nl(const char *s)
 	return (i);
 }
 
-void	ft_buffercpy(char *dst, const char *src)
-{
-    while (*src)
-    {
-        *dst = *src;
-        src++;
-        dst++;
-    }
-    *dst = 0;
-}
-
 char	*ft_strdup_nl(const char *s1)
 {
 	char	*buffer;
@@ -167,4 +156,4 @@ char	*ft_strdup(const char *s1)
 	buffer[i] = '\0';
 	return (buffer);
 }
-
+	

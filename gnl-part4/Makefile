@@ -3,7 +3,7 @@ UTILS = get_next_line_utils.c
 
 all : run clean
 
-compile : $(MAIN) $(UTILS)
+compile :
 	gcc $(MAIN) $(UTILS) -o gnl
 
 run : compile

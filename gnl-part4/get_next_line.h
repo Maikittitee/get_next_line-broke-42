@@ -31,7 +31,6 @@ size_t	ft_strlen(const char *s);
 size_t	ft_strlen_nl(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
-void	ft_buffercpy(char *dst, const char *src);
 char	*ft_strdup_nl(const char *s1);
 char	*ft_strdup(const char *s1);
 
